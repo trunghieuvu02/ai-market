@@ -90,8 +90,8 @@ async def lifespan(app: FastAPI):
     try:
         # Initialize PostgreSQL connection
         import asyncpg
-        host = os.getenv('POSTGRES_HOST', 'localhost')  
-        port = int(os.getenv('POSTGRES_PORT', '5433' if host == 'localhost' else '5432'))
+        host = os.getenv('POSTGRES_HOST', 'localhost')
+        port = int(os.getenv('POSTGRES_PORT', '5435' if host == 'localhost' else '5432'))
         
         dependencies.db_pool = await asyncpg.create_pool(
             host=host,
@@ -329,7 +329,7 @@ logger.info("✅ All route modules registered")
 
 if __name__ == "__main__":
     logger.info("Starting AI Market Analysis System API v4.18.1 (Modular Architecture)...")
-    logger.info("Database: PostgreSQL (localhost:5433)")
+    logger.info("Database: PostgreSQL (localhost:5435)")
     logger.info("API: http://localhost:8001")
     logger.info("Health: http://localhost:8001/health")
     logger.info("Status: http://localhost:8001/status")
